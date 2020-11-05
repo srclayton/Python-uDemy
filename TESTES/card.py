@@ -23,7 +23,7 @@ def luhn(num_card,num_aux,tamanho):
 	aux=0
 	while i < tamanho:
 		aux= int(num_aux[i])
-		if impar_par % 2 == 1:
+		if impar_par % 2 == 0:
 			aux= aux * 2
 			if aux > 9:
 				new_num = (new_num * 100) + aux
@@ -34,10 +34,11 @@ def luhn(num_card,num_aux,tamanho):
 		impar_par+=1
 		i+=1
 	resultado = soma(new_num)
+	print(resultado, new_num)
 	if valida_soma(resultado):
 		print(num_aux + " " + operadoras[num_aux[0:2]] + " valido!")
 	else:
-		...
+		print("deu n")
 	
 
 operadoras={"51":"Mastercard","52":"Mastercard","53":"Mastercard","54":"Mastercard","55":"Mastercard"}
