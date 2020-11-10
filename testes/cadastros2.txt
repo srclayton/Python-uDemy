@@ -32,4 +32,4 @@ Kevin Kolb QB, PHI 115 189 1197 7 7 60.8% 76.1
 Aaron Rodgers QB, GB 312 475 3922 28 11 65.7% 101.2 
 Sam Bradford QB, STL 354 590 3512 18 15 60.0% 76.5 
 Shaun Hill QB, DET 257 416 2686 16 12 61.8% 81.3 
-Clayton Clayton Sam 
+Clayton Clayton Sam Clayton 

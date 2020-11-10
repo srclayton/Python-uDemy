@@ -1,4 +1,4 @@
-# -*- coding: utf-8 -*-
+	# -*- coding: utf-8 -*-
 arquivo = open("cadastros3.txt", "a")
 arquivo_leitura = open("cadastros3.txt", "r")
 def menu():
@@ -6,12 +6,12 @@ def menu():
 	print("'        SISTEMA DE CADASTRO      '")
 	print("===================================")
 def cadastrar():
-	tab = "		"
+	tab = " "
 	nasc= input("\nDigite a data de nascimento: ")
 	cpf= input("\n Digite o cpf: ")
 	tel= input("\nDigite o numero de telefone")
 	arquivo.write(nome + tab + nasc + tab + cpf + tab + tel + '\n')
-	
+
 menu()
 chose= input("Digite 'Cad' p/ cadastrar ou 'Find' para localizar: ")
 nome= input("\nDigite o nome: ")
