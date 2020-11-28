@@ -1,10 +1,10 @@
 # -*- coding: utf-8 -*-
 def verifica_operadora(num_card):
-	if num_card[0:2] == "34" or num_card[0:2] == "37" or num_card[0:2] == "38" or num_card[0:2] == "30" or num_card[0:2] == "36" or num_card[0:2] == "51" or num_card[0:2] == "52" or num_card[0:2] == "53" or num_card[0:2] == "54" or num_card[0:2] == "55":
+	if num_card[0:2] == "34" or num_card[0:2] == "37" or num_card[0:2] == "38" or num_card[0:2] == "30" or num_card[0:2] == "36" or num_card[0:2] == "50" or num_card[0:2] == "51" or num_card[0:2] == "52" or num_card[0:2] == "53" or num_card[0:2] == "54" or num_card[0:2] == "55":
 		return True
 	elif num_card[0] == "4" or num_card[0]== "3":
 		return True
-	elif num_card[0:4] == "6011" or num_card[0:4] == "2014" or num_card[0:4] == "2149" or num_card[0:4] == "2131" or num_card[0:4] == "1800":
+	elif num_card[0:4] == "6011" or num_card[0:4] == "2014" or num_card[0:4] == "2149" or num_card[0:4] == "2131" or num_card[0:4] == "1800" or num_card [0:4] == "8699":
 		return True 
 	else:
 		return False
@@ -21,7 +21,7 @@ def valida_soma(soma_final):
 	else:
 		return False
 def luhn(num_card,num_aux,tamanho):
-	i = 0
+	aux_tamanho = tamanho
 	impar_par = 1
 	new_num=0
 	aux=0
@@ -38,23 +38,26 @@ def luhn(num_card,num_aux,tamanho):
 		impar_par+=1
 		tamanho-=1
 	resultado = soma(new_num)
-	print(resultado)
-	#falta verificar o tamanho do cartão para verificar a operadora. ex de input = 378282246310005   output: JCB, ao invez de amex
 	if valida_soma(resultado):
-		if num_aux[0] in operadoras:
+		if num_aux[0] in operadoras and (aux_tamanho == 13 or aux_tamanho == 16):
 			print(num_aux + " " + operadoras[num_aux[0]] + " valido!")
-		elif num_aux[0:2] in operadoras:
+		elif num_aux[0:2] in operadoras and (aux_tamanho > 13 and aux_tamanho < 17):
 			print(num_aux + " " + operadoras[num_aux[0:2]] + " valido!")
-		else:
+		elif num_aux[0:4] in operadoras and aux_tamanho == 15:
 			print(num_aux + " " + operadoras[num_aux[0:4]] + " valido!")
-	else:
-		if num_aux[0] in operadoras:
-			print(num_aux + " " + operadoras[num_aux[0]] + "invalido!")
-		elif num_aux[0:2] in operadoras:
-			print(num_aux + " " + operadoras[num_aux[0:2]] + " invalido!")
 		else:
+			print(num_aux + " Operadora desconhecida!")
+	else:
+		if num_aux[0] in operadoras and (aux_tamanho == 13 or aux_tamanho == 16):
+			print(num_aux + " " + operadoras[num_aux[0]] + " invalido!")
+		elif num_aux[0:2] in operadoras and (aux_tamanho > 13 and aux_tamanho < 17):
+			print(num_aux + " " + operadoras[num_aux[0:2]] + " invalido!")
+		elif num_aux[0:4] in operadoras and aux_tamanho == 15:
 			print(num_aux + " " + operadoras[num_aux[0:4]] + " invalido!")
-operadoras={"51":"Mastercard","52":"Mastercard","53":"Mastercard","54":"Mastercard","55":"Mastercard","4":"Visa", "34":"Amex", "37":"Amex", "30":"Diners", "36":"Diners", "38":"Diners", "6011":"Discover", "2014":"enRout", "2149":"enRout", "3":"JCB", "2131":"JCB", "1800":"JCB"}
+		else:
+			print(num_aux + " Operadora desconhecida!")
+
+operadoras={"51":"Mastercard","52":"Mastercard","53":"Mastercard","54":"Mastercard","55":"Mastercard", "50":"Aura","4":"Visa", "34":"Amex", "37":"Amex", "30":"Diners", "36":"Diners", "38":"Diners", "6011":"Discover", "2014":"enRout", "2149":"enRout", "3":"JCB", "2131":"JCB", "1800":"JCB", "8699":"Voyager"}
 numero_cartao=1
 while numero_cartao != 0:
 	numero_cartao = int(input("Digite o numero do cartão sem pontos ou espaços, ou digite 0 para sair \n"))
